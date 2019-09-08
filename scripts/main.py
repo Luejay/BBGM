@@ -1,7 +1,7 @@
-from scripts.league import *
-from scripts.player import *
-from scripts.nation import *
-from scripts.team import *
+from league import *
+from player import *
+from nation import *
+from team import *
 
 '''
 all_200 =player("200","200",100,japan,ability=player.return_ability())

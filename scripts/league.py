@@ -1,6 +1,6 @@
-from scripts.nation import *
-from scripts.team import *
-from scripts.player import *
+from nation import *
+from team import *
+from player import *
 
 def rand_num(range,times):
     total = 0

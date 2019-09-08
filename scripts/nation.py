@@ -2,9 +2,9 @@ from random import randint as rand
 from random import uniform as ranf
 from random import choice
 
-from scripts import player as pl
-from scripts.firstname import *
-from scripts.lastname import *
+import player as pl
+from firstname import *
+from lastname import *
 
 
 class nation:
