@@ -1,4 +1,5 @@
 from random import randint as rand
+from random import uniform as ranf
 
 class player:
     all_players = []
@@ -182,3 +183,24 @@ class player:
     def return_useless_player(nation):
         p = player("モブ","モブ男",20,nation,ability=player.return_ability(0,0,0,0,0,0,0,0,0,0,0,0,0,0),mob_character=True,position = "C")
         return p
+
+    def shoot_ball(self,distance ,shot_type = "three", opponent_player = None):
+        if shot_type == 'three':
+            percentage = 0.24*self.ability['three_pt']
+            if opponent_player is not None:
+                percentage -= (opponent_player.ability['block']/16)
+            if ranf(0,100) < percentage:
+                return True
+            else:
+                return False
+
+        elif shot_type == "mid_range":
+            percentage = 0.3 * self.ability['mid_pt']
+
+            if opponent_player is not None:
+                percentage-=(opponent_player.ability['mid_pt']/20)
+            if ranf(0,100)<percentage:
+                return True
+            else:
+                return False
+

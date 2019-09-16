@@ -3,7 +3,7 @@ from player import *
 from nation import *
 from team import *
 
-'''
+
 all_200 =player("200","200",100,japan,ability=player.return_ability())
 
 stephen_curry = player("Stephen",'Curry',31,usa,ability = player.return_ability(speed = 200,power = 80,jump = 40,three_pt=200,mid_pt=200,dunk=70,layup=170,rebound=70,block=20,steal=140,dribble=184,pas=180) ,height = 190,freethrow_percentage= 92.1)
@@ -29,7 +29,7 @@ blake_griffin = player("Blake",'Griffin',29,usa,ability=player.return_ability(ju
 
 russell_westbrook = player("Russell",'Westbrook',30,usa,ability=player.return_ability(jump = 180,speed = 200,power = 180,three_pt=160,mid_pt=160,dunk = 180,layup = 150,rebound = 170,block = 70,steal = 140,dribble = 140,pas = 200),height=190,freethrow_percentage=65.6,position="G")
 paul_george = player("Paul",'George',29,usa,ability=player.return_ability(jump = 160,speed =180,power = 160,three_pt=150,mid_pt=165,dunk = 190,layup = 170,rebound = 170,block = 110,steal = 200,dribble = 110,pas = 80),height = 206,freethrow_percentage=84.4,position="GF")
-'''
+
 def debug():
     all_average = player("average",'average',25,usa,ability=player.return_ability(100,100,100,100,100,100,100,100,100,100,100,100,100,100))
     print(all_average)
@@ -55,7 +55,7 @@ japan.sort_national_roster()
 european_league = EL()
 
 
-
+'''
 european_league.create_all_roster()
 european_league.sort_all_roster()
 
@@ -70,3 +70,35 @@ nation.national_starting_roster_ranking()
 japan.print_national_roster()
 
 japanese_player_on_other_league()
+'''
+'''
+for team in japan_league.all_teams:
+    team.calculate_player_value()
+    print(team.teamnm+": ")
+    team.all_players.sort(key = lambda x: team.player_value[x],reverse = True)
+    for player in team.all_players:
+
+        print(team.player_value[player],end = " ")
+        print(player)
+    print()
+'''
+
+average_player = player("Average","average",20,japan,ability = player.return_ability(block = 92))
+
+went_in = 0
+times = 10000
+
+for i in range(times):
+    if all_200.shoot_ball(0,shot_type = "mid_range"):
+        went_in+=1
+print("Open mid range: ",end = "")
+print((went_in/times)*100)
+
+went_in = 0
+times = 10000
+
+for i in range(times):
+    if all_200.shoot_ball(0,shot_type='mid_range',opponent_player=average_player):
+        went_in+=1
+print("Contested mid range: ",end = "")
+print((went_in/times)*100)

@@ -21,6 +21,10 @@ class team:
 
         self.league = None
 
+        self.current_strategy = None
+
+        self.player_value = {}
+
     def __repr__(self):
         total = self.citynm+ " "+ self.teamnm + "\n"
 
@@ -397,6 +401,27 @@ class team:
         total += "C: " + str(self.starting_roster['C']) + "\n"
 
         return total
+
+    def calculate_player_value(self):
+        self.player_value.clear()
+
+        age_value = 30
+
+        ability_ratio =11.0
+        age_ratio = 8.0
+
+        total = 0
+        if self.current_strategy == "rebuilding":
+            age_ratio += 1.2
+        elif self.current_strategy == "contending":
+            ability_ratio += 1.2
+
+
+        for player in self.all_players:
+            self.player_value[player] =round( (ability_ratio*player.position_list['highest_position_rating'])*(age_ratio * (age_value/player.age)),ndigits=6)
+
+
+
 
 class all_star_team:
     def __init__(self,name,all_teams):

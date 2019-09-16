@@ -360,6 +360,8 @@ class NBC(league):
     salary_cap = 1200 # 12 million
     foreign_player_limit = 3
 
+    current_plase = None # Freeagent, Preseason, Postseason
+
 
 
     talent = {"superstar":80,'average':50,'minor':20}
@@ -433,8 +435,6 @@ class NBC(league):
                                    yokohama_flash, saitama_wildcats, ibaragi_bastion,sizuoka_turtles, osaka_knights, nagoya_serpents, kyoto_goldentemples, nagano_lynx,
                                    gifu_ducks, mie_aquadreams,hyogo_burners, fukuoka_searoads, hiroshima_acrokant, ehime_orangedevils,
                                     okayama_heroes, kumamoto_castles, kagoshima_beast]
-
-
 
     def create_new_roster(self,team):
         star_percentage = 2
@@ -623,3 +623,7 @@ class NBC(league):
         self.northern_conference['all_star_team'].sort_roster()
         self.southern_conference['all_star_team'].sort_roster()
 
+    def renew_contract(self):
+        for team in self.all_teams:
+            for player in team:
+                player.contract['length']-=1
